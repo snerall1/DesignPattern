@@ -7,7 +7,7 @@ public class Buyer extends Person {
 
     @Override
     public ProductMenu createProductMenu(int productType) {
-        System.out.println("Factory Pattern");
+        System.out.println("Factory Pattern implementation");
         
     }
 
