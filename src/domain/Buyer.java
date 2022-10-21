@@ -13,7 +13,7 @@ public class Buyer extends Person {
         else
             productMenu = new ProduceProductMenu();
         System.out.println((productType==0?" Meat Product Menu":" Produce Product Menu") + " initialized for Buyer");
-
+       //Instantiated product menu
         return productMenu;
     }
 

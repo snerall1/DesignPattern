@@ -43,7 +43,7 @@ public class Facade implements VisitableItem {
         System.out.println("Login implementation using the Facade pattern");
 
         try{
-            if(dataManager.fetchPassword(name).equals(password))
+            if(dataManager.fetchPassword(name).equals(password))    //validating user
             {
                 currentUser = createUser(name);
                 attachProductToUser(currentUser);
@@ -160,7 +160,7 @@ public class Facade implements VisitableItem {
             System.out.println(selectionIndex + ": " + iterator.next().id);
             selectionIndex++;
         }
-
+        //Iterating the product menu
         System.out.println("Select the Product");
 
         try {
