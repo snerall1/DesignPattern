@@ -8,6 +8,13 @@ public class Seller extends Person{
     @Override
     public ProductMenu createProductMenu(int productType) {
 
+        if(productType == 0)
+            productMenu = new MeatProductMenu() ;
+        else
+            productMenu = new ProduceProductMenu();
+        System.out.println((productType==0?" Meat Product Menu":" Produce Product Menu") + " initialized product menu for Seller");
+
+        return productMenu;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Product implements VisitableItem {
 
     @Override
     public void accept(NodeVisitor visitor) {
-        //print accept in product
+
         visitor.visit(this);
     }
 

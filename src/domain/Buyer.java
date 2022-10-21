@@ -7,14 +7,20 @@ public class Buyer extends Person {
 
     @Override
     public ProductMenu createProductMenu(int productType) {
-        System.out.println("Factory Pattern implementation");
-        
+        System.out.println("Factory Pattern Implementation");
+        if(productType == 0)
+            productMenu = new MeatProductMenu() ;
+        else
+            productMenu = new ProduceProductMenu();
+        System.out.println((productType==0?" Meat Product Menu":" Produce Product Menu") + " initialized for Buyer");
+
+        return productMenu;
     }
 
 
     @Override
     public void showProductMenu() {
-        System.out.println("-------Bridge Pattern---------");
+        System.out.println("Bridge Pattern Implementation");
 
         productMenu.showMenuButtons();
         productMenu.showViewButtons();

@@ -12,7 +12,6 @@ public class Trading implements VisitableItem {
 
     @Override
     public void accept(NodeVisitor visitor) {
-        //print accept in trading
         visitor.visit(this);
     }
 }

@@ -12,8 +12,8 @@ public class RemainderVisitor extends NodeVisitor {
     @Override
     public void visit(Facade element) {
         //visiting facade
-        System.out.println("Visiting Facade....");
-        System.out.println("Iterating all products in Facade using iterator pattern");
+        System.out.println("Visiting Facade Pattern");
+        System.out.println("Iterating all products in Facade using the Iterator Pattern");
         ProductIterator iterator = (ProductIterator) element.getProducts().iterator();
         while(iterator.hasNext()) {
             iterator.next().accept(this);

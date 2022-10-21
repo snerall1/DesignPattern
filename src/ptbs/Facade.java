@@ -25,7 +25,7 @@ public class Facade implements VisitableItem {
     private Person currentUser = null;
     private DataManager dataManager = null;
 
-    Scanner sc= new Scanner(System.in); //System.in is a standard input stream
+    Scanner sc= new Scanner(System.in);
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public Facade() {
@@ -39,16 +39,14 @@ public class Facade implements VisitableItem {
     }
 
     public  void login(String name, String password) throws Exception {
-        /*Read txt file*/
-        System.out.println("-------Facade Pattern-------");
-        System.out.println("Handling Login using the Facade pattern");
+        System.out.println("Facade Pattern Implementation");
+        System.out.println("Login implementation using the Facade pattern");
 
         try{
             if(dataManager.fetchPassword(name).equals(password))
             {
                 currentUser = createUser(name);
                 attachProductToUser(currentUser);
-                //  productOperation();
                 this.selectedProduct = selectProduct();
                 this.theSelectedProduct = selectProductLevel();
                 this.displayMenu();
@@ -80,7 +78,7 @@ public class Facade implements VisitableItem {
     }
 
     void displayMenu() {
-        System.out.println("********* Choose an operation *********");
+        System.out.println("Select your choice");
         System.out.println("1. Create product menu");
         System.out.println("2. Show product menu");
         System.out.println("3. Remind");
@@ -130,12 +128,11 @@ public class Facade implements VisitableItem {
     }
 
     private Person createUser(String name) throws Exception {
-        //print creating user
         return dataManager.initializePerson(name);
     }
 
     private void createProductList() {
-        //Create product list for the whole system
+    
         try {
             productList = new ProductList(dataManager.initializeAllProducts());
             for (Object product : productList) {
@@ -149,17 +146,13 @@ public class Facade implements VisitableItem {
     }
 
     void attachProductToUser(Person person) throws Exception {
-        //print attaching products to user
-        //Read UserProduct.txt and add all products mapped to user object by calling User.addProduct(product)
-        //Attach the product passed to user selected
         person.addProduct(dataManager.fetchProductMappingForUser(person.name));
     }
 
     Product selectProduct() {
-        // show list of products and return selected products
-        //display currentUser.addProduct - using iterator
-        System.out.println("------Iterator pattern-------");
-        System.out.println("Iterating the products for the user using iterator pattern");
+
+        System.out.println("Iterator pattern implementation");
+        System.out.println("Iterating the products using Iterator pattern");
 
         ProductIterator iterator = (ProductIterator) currentUser.getAddedProducts().iterator();
         int selectionIndex = 0;
@@ -168,7 +161,7 @@ public class Facade implements VisitableItem {
             selectionIndex++;
         }
 
-        System.out.println("Enter product selection:");
+        System.out.println("Select the Product");
 
         try {
             selectionIndex = Integer.parseInt(br.readLine());
@@ -176,15 +169,14 @@ public class Facade implements VisitableItem {
             System.out.println(ioe);
         }
 
-        Product selectedProduct = (Product) currentUser.getAddedProducts().get(selectionIndex); // Dummy project object
+        Product selectedProduct = (Product) currentUser.getAddedProducts().get(selectionIndex);
         return selectedProduct;
     }
 
     void productOperation() {
         if(currentUser!=null) {
             currentUser.createProductMenu(theSelectedProduct);
-            //Create product menu for currentUser
-            //Show menu for selecting theSelectedProduct
+    
         }
     }
 
@@ -198,8 +190,7 @@ public class Facade implements VisitableItem {
 
     @Override
     public void accept(NodeVisitor visitor) {
-        //print accept in facade
-        System.out.println("-------Visitor pattern-------");
+        System.out.println("Visitor pattern implementation");
         visitor.visit(this);
     }
 }

@@ -18,7 +18,7 @@ import domain.Buyer;
 
 public class DataManager {
 
-    private static final String FILE_PATH = "C:\\Users\\snerall1\\Documents\\SER_515\\DPRef\\Design-Patterns\\src\\test_files\\";
+    private static final String FILE_PATH = "C:\\Users\\snerall1\\Documents\\SER_515\\DesignPatterns\\Design_Patterns\\src\\test_files\\";
     public List<Product> initializeAllProducts() throws Exception
     {
         /*Initialize base on Person TYPE */
@@ -47,8 +47,8 @@ public class DataManager {
     public List<Product> fetchProductMappingForUser(String name) throws Exception
     {
         /*Fetch product file base on username*/
-        Map<String, List<String>> productMapping =  getDataMap("UserProduct.txt");
-        List<String> productList = productMapping.get(name);
+        Map<String, List<String>> productMap =  getDataMap("UserProduct.txt");
+        List<String> productList = productMap.get(name);
         return productList.stream().map(strProduct -> new Product(strProduct)).collect(Collectors.toList());
     }
     private Map<String, List<String>> getDataMap(String fileName) throws Exception
@@ -56,23 +56,23 @@ public class DataManager {
         File file = new File(FILE_PATH+fileName);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String str;
-        HashMap<String, List<String>> dataMapping = new HashMap<>();
+        HashMap<String, List<String>> dataMap = new HashMap<>();
         while((str = br.readLine()) != null)
         {
             String[] token = str.split(":");
-            List<String> valueList = new ArrayList<>() ;
+            List<String> value = new ArrayList<>() ;
             if(token.length==2) {
-                if(dataMapping.containsKey(token[0])) {
-                    valueList = dataMapping.get(token[0]);
-                    valueList.add(token[1]);
+                if(dataMap.containsKey(token[0])) {
+                    value = dataMap.get(token[0]);
+                    value.add(token[1]);
                 }
-                else  valueList.add(token[1]);
+                else  value.add(token[1]);
             }
 
 
-            dataMapping.put(token[0], valueList);
+            dataMap.put(token[0], value);
         }
-        return dataMapping;
+        return dataMap;
     }
 
 }
