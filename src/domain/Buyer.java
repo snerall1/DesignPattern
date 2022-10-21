@@ -20,7 +20,7 @@ public class Buyer extends Person {
 
     @Override
     public void showProductMenu() {
-        System.out.println("Bridge Pattern Implementation");
+        System.out.println("Implementing Bridge Pattern");
 
         productMenu.showMenuButtons();
         productMenu.showViewButtons();
